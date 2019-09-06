@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <form class="m-5" action="/process_form" method="POST">
+        <p>Your Name</p>
+        <input type="text" name="name" placeholder="Your Name">
+        <p>Dojo Locaiton</p>
+        <select name="location">
+            <option value="MountainView">Mountain View</option>
+            <option value="Seattle">Seattle</option>
+            <option value="Boston">Boston</option>
+            <option value="Canada">Canada</option>
+          </select>
+        <p> Favorite Language</p>
+        <select name="language">
+            <option value="JavaScript">JavaScript</option>
+            <option value="Seattle">Seattle</option>
+            <option value="Boston">Boston</option>
+            <option value="Canada">Canada</option>
+          </select>
+        <p> Comment: </p>
+        <textarea name="comment"></textarea>
+        <input class="btn btn-primary" type="submit" value="submit!">
+    </form>
+
+    <div id="imagecat">
+    </div>
+
+    <script>
+      $(document).ready(function() {
+          $.get('https://api.thecatapi.com/v1/images/search?size=full', function(data) {
+      
+              var html = '<img src="' + data[0]["url"] + '">';
+              $("#imagecat").html(html);
+          });
+      });
+      </script>
+</body>
+</html>
